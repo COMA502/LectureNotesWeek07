@@ -1,4 +1,5 @@
 pop,1.00
+icecream,2.00
 shake,2.00
 burger,1.00
 fries,0.75
