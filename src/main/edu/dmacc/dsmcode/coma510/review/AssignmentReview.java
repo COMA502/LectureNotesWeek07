@@ -103,7 +103,7 @@ public class AssignmentReview {
         PrintWriter fileWriter = new PrintWriter(menuFile);
         try {
             for (String food : menu.keySet()) {
-                fileWriter.printf("%s,%.2f", food, menu.get(food));
+                fileWriter.printf("%s,%.2f\n", food, menu.get(food));
             }
         } finally {
             fileWriter.close();
