@@ -8,16 +8,18 @@ import java.util.Scanner;
 
 public class Menu {
 
-    File menuFile;
-    HashMap<String, Double> menu;
+    private File menuFile;
+    private HashMap<String, Double> menu;
 
-    public Menu(String meal) {
+    public Menu(String meal) throws FileNotFoundException {
         menuFile = new File(
                 "src\\main\\edu\\dmacc\\dsmcode\\coma510\\exercises\\" + meal + "_menu.txt");
         menu = new HashMap<>();
+
+        getMenuFromFile();
     }
 
-    public void getMenuFromFile() throws FileNotFoundException {
+    private void getMenuFromFile() throws FileNotFoundException {
         //        System.out.println(menuFile.getAbsolutePath()); // Use this if you're getting FileNotFoundException
         Scanner fileInput = new Scanner(menuFile);
         while (fileInput.hasNextLine()) {
@@ -29,7 +31,7 @@ public class Menu {
         }
     }
 
-    public void saveMenuToFile() throws FileNotFoundException {
+    private void saveMenuToFile() throws FileNotFoundException {
         PrintWriter fileWriter = new PrintWriter(menuFile);
         try {
             for (String food : menu.keySet()) {
@@ -49,8 +51,9 @@ public class Menu {
         }
     }
 
-    public void addMenuItem(String food, double price) {
+    public void addMenuItem(String food, double price) throws FileNotFoundException {
         menu.put(food, price);
+        saveMenuToFile();
     }
 
     public boolean hasFood(String food) {

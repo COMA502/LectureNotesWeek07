@@ -78,7 +78,6 @@ public class Restaraunt {
         Menu menu = new Menu(usersMealChoice);
 
 //     * (1) load the menu from file 'menu.txt',
-        menu.getMenuFromFile();
 
 //     * (2) print the menu to the user and
         menu.printMenu();
@@ -91,13 +90,12 @@ public class Restaraunt {
             askUserForOrderAndTotal(menu, userInput);
         } else if ("add".equals(operation)) {
             getFoodAndPricesToAdd(menu, userInput);
-            menu.saveMenuToFile();
         } else {
             System.out.println("Wrong! Must be 'order' or 'add'! ;-)");
         }
     }
 
-    private static void getFoodAndPricesToAdd(Menu menu, Scanner userInput) {
+    private static void getFoodAndPricesToAdd(Menu menu, Scanner userInput) throws FileNotFoundException {
         //            What food would you like to add? burger
 //            What's the price? 1.5
         String food = getFoodToAdd(userInput);
